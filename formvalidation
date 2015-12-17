@@ -1,0 +1,71 @@
+<html>
+<head>
+    <link rel="stylesheet" href="http://jqueryvalidation.org/files/demo/site-demos.css">
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
+    <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //This is for number validation
+            $(".number").keydown(function (e) {
+                console.log(e.keyCode);
+                // Allow: backspace, delete, tab, escape, enter and .
+                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                // Allow: Ctrl+A, Command+A
+            (e.keyCode == 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+                // Allow: home, end, left, right, down, up
+            (e.keyCode >= 35 && e.keyCode <= 40)) {
+                    // let it happen, don't do anything
+                    return;
+                }
+                // Ensure that it is a number and stop the keypress
+                if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<style>
+
+body {
+    background-color: silver;
+	
+}
+
+
+</style>
+
+    <form id="testpractice" action="insert.php" method="post">
+    Name:<input id="name" class="req" name="field" minlength="2" type="text" required/></br></br>
+    Email:<input id="email" class="req" type="email" name="email" required/></br></br> 
+    Address:<textarea
+        class="req" id="address" name="address" required></textarea></br></br> 
+	Phone:
+    <input id="number" class="number req" name="phone" maxlength="10" minlength="10" type="text" required /></br></br>
+    Sex:
+    <input type="radio" class="req" name="sex" value="male" checked>
+    Male
+    <input type="radio" class="req" name="sex" value="female" required>Female</br></br> License
+    No:
+    <input type="text" class="number req" name="LicenseNumber" required></br></br> Country :<select
+        name="country" id="country" id="country" required>	
+        <option value="">Choose a country</option>
+        <option value="India">India</option>
+        <option value="England">England</option>
+        <option value="USA">USA</option>
+        <option value="Austarlia">Australia</option>
+    </select></br></br>
+    <button type="submit" id="submit">
+        Submit</button>
+    
+    
+        
+
+
+    </form>
+   
+</body>
+</html>
+
